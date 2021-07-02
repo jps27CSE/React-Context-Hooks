@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { v1 as uuidv1 } from 'uuid';
+import NewSongForm from '../components/NewSongForm'
 const SongList = () => {
 
   const [songs, setSongs] = useState([
@@ -8,8 +9,8 @@ const SongList = () => {
     { title: 'this wild darkness', id: 3 }
   ])
 
-  const addSong = () => {
-    setSongs([...songs, { title: 'new song', id: uuidv1() }])
+  const addSong = (title) => {
+    setSongs([...songs, { title: title, id: uuidv1() }])
   }
 
   return (
@@ -23,7 +24,7 @@ const SongList = () => {
           })
         }
       </ul>
-      <button onClick={addSong}>Add Song</button>
+      <NewSongForm addSong={addSong}/>
     </div>
   )
 }

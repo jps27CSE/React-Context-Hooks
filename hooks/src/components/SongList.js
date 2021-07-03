@@ -8,10 +8,16 @@ const SongList = () => {
     { title: 'memory gospel', id: 2 },
     { title: 'this wild darkness', id: 3 }
   ])
+  
+  const [age,setAge] = useState(20)
 
   const addSong = (title) => {
     setSongs([...songs, { title: title, id: uuidv1() }])
   }
+
+  useEffect(()=>{
+    console.log('useEffect ran',songs)
+  },[songs])
 
   return (
     <div className='song-list'>
@@ -25,6 +31,7 @@ const SongList = () => {
         }
       </ul>
       <NewSongForm addSong={addSong}/>
+      <button onClick={()=>{setAge(age+1)}}>add age : {age}</button>
     </div>
   )
 }
